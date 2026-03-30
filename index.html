@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saleem Sheikh Dubai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #d4a843;
+      --gold2: #f5d080;
+      --dark: #080810;
+    }
+
+    html, body {
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: var(--dark);
+      font-family: 'Rajdhani', sans-serif;
+      position: relative;
+      overflow-x: hidden;
+      padding: 40px 20px;
+    }
+
+    /* Background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 0%, rgba(212,168,67,0.22) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 40% at 85% 90%, rgba(212,168,67,0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 10% 70%, rgba(212,168,67,0.06) 0%, transparent 55%),
+        #080810;
+      z-index: 0;
+      animation: bgPulse 7s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgPulse {
+      from { opacity: 0.8; }
+      to   { opacity: 1; }
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        110deg,
+        transparent 0px,
+        transparent 80px,
+        rgba(212,168,67,0.018) 80px,
+        rgba(212,168,67,0.018) 81px
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.5; }
+      90%  { opacity: 0.2; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+
+    /* CONTENT */
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      max-width: 520px;
+      animation: pageIn 1s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* LOGO */
+    .logo-wrap {
+      position: relative;
+      width: clamp(110px, 28vw, 150px);
+      height: clamp(110px, 28vw, 150px);
+      margin-bottom: clamp(24px, 5vw, 36px);
+      animation: logoIn 1s 0.2s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes logoIn {
+      from { opacity: 0; transform: scale(0.6) rotate(-10deg); }
+      to   { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    .logo-glow {
+      position: absolute;
+      inset: -12px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212,168,67,0.35) 0%, transparent 70%);
+      animation: glowPulse 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes glowPulse {
+      from { opacity: 0.5; transform: scale(0.95); }
+      to   { opacity: 1; transform: scale(1.05); }
+    }
+
+    .logo-ring {
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      background: conic-gradient(
+        var(--gold2) 0deg,
+        var(--gold) 80deg,
+        #7a5510 160deg,
+        var(--gold) 240deg,
+        var(--gold2) 320deg,
+        transparent 340deg,
+        transparent 360deg
+      );
+      animation: spinRing 4s linear infinite;
+    }
+    @keyframes spinRing { to { transform: rotate(360deg); } }
+
+    .logo-ring::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border-radius: 50%;
+      background: var(--dark);
+    }
+
+    .logo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 2;
+      border: 3px solid rgba(212,168,67,0.4);
+    }
+
+    /* TITLE */
+    .title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 6vw, 2.6rem);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      background: linear-gradient(135deg, var(--gold2) 0%, var(--gold) 45%, #c49030 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.15;
+      margin-bottom: 8px;
+      animation: fadeUp 0.8s 0.4s both;
+    }
+
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: clamp(0.7rem, 2.5vw, 0.82rem);
+      letter-spacing: 0.28em;
+      color: rgba(212,168,67,0.5);
+      text-transform: uppercase;
+      margin-bottom: clamp(20px, 5vw, 32px);
+      animation: fadeUp 0.8s 0.5s both;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto clamp(20px, 5vw, 30px);
+      animation: fadeUp 0.8s 0.55s both;
+    }
+
+    /* TAGLINES */
+    .taglines {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(10px, 2.5vw, 16px);
+      margin-bottom: clamp(28px, 7vw, 42px);
+      animation: fadeUp 0.8s 0.6s both;
+      width: 100%;
+    }
+
+    .tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: clamp(0.85rem, 3vw, 1.05rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: rgba(245,220,165,0.85);
+      text-transform: uppercase;
+    }
+
+    .tag-icon { font-size: clamp(1rem, 3vw, 1.2rem); }
+
+    /* JOIN BUTTON */
+    .join-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      background: linear-gradient(135deg, #c49030 0%, var(--gold2) 50%, #b07820 100%);
+      color: #080810;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      padding: clamp(14px, 3.5vw, 18px) clamp(36px, 10vw, 60px);
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      box-shadow:
+        0 0 0 1px rgba(212,168,67,0.5),
+        0 6px 40px rgba(212,168,67,0.4),
+        0 1px 0 rgba(255,255,255,0.3) inset;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      animation: fadeUp 0.8s 0.75s both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .join-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -70%;
+      width: 45%; height: 200%;
+      background: rgba(255,255,255,0.2);
+      transform: skewX(-20deg);
+      transition: left 0.45s ease;
+    }
+    .join-btn:hover::before { left: 130%; }
+    .join-btn:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow:
+        0 0 0 1px rgba(212,168,67,0.7),
+        0 10px 60px rgba(212,168,67,0.55),
+        0 1px 0 rgba(255,255,255,0.3) inset;
+    }
+    .join-btn:active { transform: scale(0.97); }
+
+    .tg-icon { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* CREDIT */
+    .credit {
+      margin-top: clamp(22px, 5vw, 34px);
+      font-size: clamp(0.65rem, 2vw, 0.75rem);
+      letter-spacing: 0.14em;
+      color: rgba(212,168,67,0.3);
+      text-transform: uppercase;
+      animation: fadeUp 0.8s 0.9s both;
+    }
+    .credit a {
+      color: rgba(212,168,67,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .credit a:hover { color: var(--gold); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<div class="content">
+
+  <div class="logo-wrap">
+    <div class="logo-glow"></div>
+    <div class="logo-ring"></div>
+    <img class="logo-img"
+      src="https://fantasticczone.site/wp-content/uploads/2026/03/ued.jpg"
+      alt="Saleem Sheikh Dubai"
+      onerror="this.style.background='#d4a843'"
+    />
+  </div>
+
+  <div class="title">SALEEM SHEIKH</div>
+  <div class="location-badge">✦ &nbsp;Dubai&nbsp; ✦</div>
+
+  <div class="divider"></div>
+
+  <div class="taglines">
+    <div class="tag">
+      <span class="tag-icon">💎</span>
+      <span>Dubai-Based Premium Syndicate</span>
+    </div>
+    <div class="tag">
+      <span class="tag-icon">🔥</span>
+      <span>High Accuracy Predictions</span>
+    </div>
+    <div class="tag">
+      <span class="tag-icon">⚡</span>
+      <span>Fastest Updates &amp; Service</span>
+    </div>
+  </div>
+
+  <a class="join-btn" href="https://t.me/+DQCwaeYxNYtiOTc1" target="_blank">
+    <svg class="tg-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.265 2.428a1.637 1.637 0 00-1.657-.228L1.914 9.688a1.624 1.624 0 00.1 3.029l4.49 1.497 2.378 7.133a.82.82 0 001.396.327l2.95-2.95 4.762 3.496a1.63 1.63 0 001.024.362 1.637 1.637 0 001.14-.462 1.625 1.625 0 00.453-1.006l2.19-17.78a1.627 1.627 0 00-.532-1.906z" fill="#080810"/>
+    </svg>
+    JOIN NOW
+  </a>
+
+  <div class="credit">
+    Ads by <a href="https://t.me/+TRlJl628l-FkMWE9" target="_blank">@Nexgroww_agency</a>
+  </div>
+
+</div>
+
+<script>
+  const container = document.getElementById('particles');
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = Math.random() * 3 + 1.5;
+    p.style.cssText = `
+      left: ${Math.random() * 100}vw;
+      width: ${size}px;
+      height: ${size}px;
+      animation-duration: ${Math.random() * 14 + 8}s;
+      animation-delay: ${Math.random() * 12}s;
+    `;
+    container.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
